@@ -1,0 +1,94 @@
+/* Token thương hiệu — xem profile.md mục 3. Bố cục theo mẫu Figma: nền kem, header xanh rêu, nút cam bo tròn. */
+:root {
+  --green: #102318;    /* xanh rêu đậm */
+  --cream: #f4efe3;    /* kem nền sáng */
+  --paper: #fbf8f1;    /* bề mặt nổi trên nền kem */
+  --orange: #de6f1f;   /* cam đậm: nút hành động */
+  --orange-ink: #a3480b; /* cam cho chữ nhỏ trên nền kem (≥5:1) */
+  --clay: #db8a34;     /* cam đất */
+  --leaf: #8fc49a;     /* xanh lá non */
+  --ink: #102318;
+  --ink-soft: #4a5a4e;
+  --on-green: #f4efe3;
+  --on-green-soft: #b9c2b4;
+
+  --serif: 'Fraunces', Georgia, serif;
+  --sans: 'Be Vietnam Pro', system-ui, sans-serif;
+  --step--1: 0.875rem;
+  --step-0: clamp(1rem, 0.96rem + 0.2vw, 1.125rem);
+  --step-1: clamp(1.2rem, 1.08rem + 0.5vw, 1.5rem);
+  --step-2: clamp(1.6rem, 1.25rem + 1.6vw, 2.6rem);
+  --step-3: clamp(2.4rem, 1.5rem + 3.8vw, 4.75rem);
+  --step-4: clamp(2.75rem, 1.5rem + 4.6vw, 6rem);
+
+  --m: clamp(16px, 4vw, 64px);
+  --nav-h: 84px;
+  --radius: 28px;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --shadow: 0 1px 2px rgb(16 35 24 / 0.06), 0 12px 32px -8px rgb(16 35 24 / 0.18);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; overflow-x: clip; }
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--ink);
+  font: 400 var(--step-0) / 1.6 var(--sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: clip;
+}
+img, video { display: block; max-width: 100%; height: auto; }
+h1, h2, h3 {
+  margin: 0;
+  font-family: var(--serif);
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+h2 { font-size: var(--step-3); }
+h3 { font-size: var(--step-2); }
+p { margin: 0; text-wrap: pretty; }
+ul, dl, dd { margin: 0; padding: 0; list-style: none; }
+a { color: inherit; text-underline-offset: 0.2em; }
+:focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; }
+::selection { background: var(--orange); color: var(--cream); }
+section[id] { scroll-margin-top: var(--nav-h); }
+
+.wrap { width: 100%; max-width: 1440px; margin-inline: auto; padding-inline: var(--m); }
+.lead { font-size: var(--step-1); line-height: 1.5; color: var(--ink-soft); }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.num { font-variant-numeric: tabular-nums; }
+
+/* Nút: pill cam như mẫu Figma; chữ xanh đậm để đủ tương phản (4.7:1) */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 0.5em;
+  min-height: 52px; padding: 0 28px;
+  border: 2px solid var(--orange); border-radius: 999px;
+  background: var(--orange); color: var(--green);
+  font: 600 var(--step-0) / 1 var(--sans);
+  text-decoration: none; cursor: pointer; white-space: nowrap;
+  transition-property: background-color, color, border-color, scale;
+  transition-duration: 0.25s;
+  transition-timing-function: var(--ease-out);
+}
+.btn:hover { background: var(--green); border-color: var(--green); color: var(--cream); }
+.btn:active { scale: 0.96; }
+.btn--ghost { background: transparent; border-color: currentColor; color: var(--ink); }
+.btn--ghost:hover { background: var(--ink); border-color: var(--ink); color: var(--cream); }
+
+/* Chữ tách từng từ để trồi lên từ dưới mặt nạ; chừa chỗ cho dấu tiếng Việt chồng hai tầng */
+.w { display: inline-block; overflow: hidden; vertical-align: top; padding: 0.16em 0.03em 0.1em; margin: -0.16em -0.03em -0.1em; }
+.w-in { display: inline-block; }
+
+/* Ngôi sao bốn cánh lấy từ logo */
+.star { display: inline-block; width: 0.7em; aspect-ratio: 1; background: currentColor; clip-path: polygon(50% 0, 61% 39%, 100% 50%, 61% 61%, 50% 100%, 39% 61%, 0 50%, 39% 39%); }
+
+.sticker-spin { transform-box: view-box; transform-origin: 50% 50%; animation: spin 16s linear infinite; }
+@keyframes spin { to { rotate: 360deg; } }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+}

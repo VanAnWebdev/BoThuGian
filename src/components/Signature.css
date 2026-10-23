@@ -1,0 +1,39 @@
+.sig { padding-block: clamp(96px, 12vw, 180px) clamp(48px, 6vw, 96px); }
+.sig-head { display: grid; gap: 16px; max-width: 1440px; margin-bottom: clamp(48px, 6vw, 96px); }
+.sig-head .lead { max-width: 34em; }
+
+.sig-row {
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center; gap: clamp(32px, 6vw, 112px);
+  padding-block: clamp(32px, 4vw, 64px);
+}
+.sig-row.is-flip .sig-visual { order: 2; }
+
+.sig-visual { position: relative; width: min(100%, 520px); aspect-ratio: 1; justify-self: center; }
+.sig-disc { position: absolute; inset: 6%; border-radius: 50%; background: var(--disc); }
+.sig-spin { position: absolute; inset: -4% 0 4%; display: grid; place-items: center; }
+.sig-dish { width: 92%; max-height: 100%; object-fit: contain; filter: drop-shadow(0 30px 34px rgb(16 35 24 / 0.32)); }
+.sig-tag {
+  position: absolute; right: 2%; top: 8%;
+  padding: 10px 18px; border-radius: 999px;
+  background: var(--green); color: var(--cream);
+  font: 600 var(--step--1) var(--sans); letter-spacing: 0.04em; text-transform: uppercase;
+  rotate: 8deg;
+}
+
+.sig-text { display: grid; gap: 16px; justify-items: start; max-width: 32em; }
+.sig-text h3 { font-size: var(--step-3); }
+.sig-price { font: 500 var(--step-2) / 1 var(--serif); color: var(--orange-ink); }
+.sig-link { position: relative; font-weight: 600; text-decoration: none; }
+.sig-link::after {
+  content: ''; position: absolute; left: 0; right: 0; bottom: -3px; height: 2px;
+  background: currentColor; transform: scaleX(0); transform-origin: left;
+  transition: transform 0.35s var(--ease-out);
+}
+.sig-link:hover::after { transform: scaleX(1); }
+
+@media (max-width: 960px) {
+  .sig-row { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+  .sig-row.is-flip .sig-visual { order: 0; }
+  .sig-visual { width: min(86%, 420px); }
+}

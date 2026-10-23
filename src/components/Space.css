@@ -1,0 +1,39 @@
+.space { padding-block: clamp(96px, 12vw, 180px); overflow: hidden; }
+.space-head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 24px 64px; align-items: end; }
+.space-head h2 { font-size: var(--step-4); }
+
+.space-table {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(12px, 2vw, 32px);
+  width: 100%; max-width: 1440px; margin: clamp(48px, 6vw, 88px) auto;
+  padding-inline: var(--m);
+}
+.polaroid {
+  margin: 0; padding: 12px 12px 0;
+  background: var(--paper); border-radius: 8px; box-shadow: var(--shadow);
+}
+.polaroid img, .space-video { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 4px; }
+.polaroid figcaption { padding: 12px 4px 16px; font: 500 var(--step-0) var(--serif); text-align: center; }
+.space-video { grid-column: span 2; aspect-ratio: auto; height: 100%; }
+
+.space-proof { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 32px 64px; align-items: start; }
+.space-stats { display: grid; grid-template-columns: repeat(3, auto); justify-content: start; gap: 24px 48px; }
+.space-stats div { display: flex; flex-direction: column-reverse; gap: 6px; }
+.space-stats dd { font: 500 var(--step-3) / 1 var(--serif); color: var(--green); }
+.space-stats dt { font-size: var(--step--1); color: var(--ink-soft); max-width: 14ch; }
+.space-stats .star { width: 0.55em; color: var(--orange); }
+.space-topics { display: flex; flex-wrap: wrap; gap: 10px; }
+.space-topics li {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 8px 8px 8px 18px; border-radius: 999px;
+  background: var(--paper); box-shadow: var(--shadow);
+}
+.space-topics b { display: grid; place-items: center; min-width: 32px; height: 32px; padding: 0 8px; border-radius: 999px; background: var(--leaf); font-size: var(--step--1); }
+.space-proof .btn { grid-column: 2; justify-self: start; }
+
+@media (max-width: 960px) {
+  .space-head, .space-proof { grid-template-columns: minmax(0, 1fr); }
+  .space-table { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .space-stats { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+  .space-proof .btn { grid-column: 1; }
+}

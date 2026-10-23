@@ -1,0 +1,11 @@
+.intro {
+  position: fixed; inset: 0; z-index: 100;
+  display: grid; place-content: center; justify-items: center; gap: 28px;
+  background: var(--green);
+  clip-path: inset(0 0 0 0);
+}
+.intro-logo { position: relative; width: min(46vw, 230px); }
+.intro-logo img { width: 100%; }
+.intro-ghost { opacity: 0.16; filter: grayscale(1) brightness(2); }
+.intro-fill { position: absolute; inset: 0; clip-path: inset(100% 0 0 0); }
+.intro-note { color: var(--on-green-soft); font-size: var(--step--1); letter-spacing: 0.02em; }

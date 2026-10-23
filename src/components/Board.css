@@ -1,0 +1,60 @@
+.board {
+  position: relative; overflow: hidden;
+  background: var(--green); color: var(--on-green);
+}
+.board-track {
+  display: flex; align-items: center; gap: clamp(20px, 2.5vw, 40px);
+  width: max-content;
+  min-height: 100svh;
+  padding: calc(var(--nav-h) + 24px) var(--m) 120px;
+}
+
+.board-intro { width: min(520px, 84vw); flex: none; display: grid; gap: 20px; justify-items: start; }
+.board-intro .lead { color: var(--on-green-soft); }
+.board-price { font: 500 var(--step-3) / 1 var(--serif); color: var(--clay); }
+.board-hint { font-size: var(--step--1); color: var(--on-green-soft); }
+.board-hint-swipe { display: none; }
+
+.board-cut { flex: none; width: clamp(240px, 22vw, 340px); margin: 0; }
+.board-cut:nth-of-type(odd) { translate: 0 -5%; }
+.board-cut:nth-of-type(even) { translate: 0 5%; }
+.board-img { aspect-ratio: 3 / 4; border-radius: var(--radius); overflow: hidden; }
+.board-img img { width: 120%; max-width: none; height: 100%; margin-left: -10%; object-fit: cover; }
+.board-cut figcaption { margin-top: 18px; }
+.board-cut h3 { font-size: var(--step-2); }
+.board-cut p { margin-top: 6px; color: var(--on-green-soft); font-size: var(--step-0); }
+
+.board-panel {
+  flex: none; width: clamp(300px, 30vw, 440px);
+  padding: 32px; border-radius: var(--radius);
+  background: var(--cream); color: var(--ink);
+  display: grid; gap: 10px;
+}
+.board-panel img { width: 78%; justify-self: center; margin-bottom: 8px; filter: drop-shadow(0 18px 24px rgb(16 35 24 / 0.25)); }
+.board-panel p, .board-panel li { color: var(--ink-soft); }
+.board-panel ul { display: grid; gap: 6px; }
+.board-panel b { color: var(--ink); font-weight: 600; }
+.board-nuoc { background: var(--clay); }
+.board-nuoc p, .board-nuoc li { color: var(--green); }
+
+.board-ruler {
+  position: absolute; left: var(--m); right: var(--m); bottom: 40px;
+  display: flex; align-items: center; gap: 20px;
+  font-size: var(--step--1); color: var(--on-green-soft);
+}
+.board-cm b { font: 500 var(--step-2) var(--serif); color: var(--orange); }
+.board-bar { flex: 1; height: 6px; border-radius: 6px; background: rgb(244 239 227 / 0.14); overflow: hidden; }
+.board-bar i { display: block; height: 100%; background: var(--orange); transform-origin: left; transform: scaleX(0); }
+
+/* Điện thoại / giảm chuyển động: vuốt ngang tự nhiên, có điểm dừng */
+@media (max-width: 960px), (prefers-reduced-motion: reduce) {
+  .board-track {
+    width: auto; min-height: 0; overflow-x: auto; scroll-snap-type: x mandatory;
+    padding-block: 96px 64px; scrollbar-width: none;
+  }
+  .board-track > * { scroll-snap-align: start; scroll-margin-left: var(--m); }
+  .board-cut:nth-of-type(n) { translate: none; }
+  .board-ruler, .board-hint-scroll { display: none; }
+  .board-hint-swipe { display: inline; }
+  .board-img img { width: 100%; margin: 0; }
+}

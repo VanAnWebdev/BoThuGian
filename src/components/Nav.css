@@ -1,0 +1,56 @@
+.nav {
+  position: fixed; inset: 0 0 auto; z-index: 50;
+  height: var(--nav-h);
+  display: flex; align-items: center; justify-content: space-between; gap: 24px;
+  padding-inline: var(--m);
+  background: var(--green); color: var(--on-green);
+  transition: translate 0.45s var(--ease-out);
+}
+.nav.is-hidden:not(.is-open) { translate: 0 -100%; }
+
+.nav-logo img { height: 60px; width: auto; transition: rotate 0.4s var(--ease-out), scale 0.4s var(--ease-out); }
+.nav-logo:hover img { rotate: -6deg; scale: 1.06; }
+
+.nav-links { position: relative; display: flex; gap: 4px; }
+.nav-links a {
+  position: relative; z-index: 1;
+  padding: 12px 22px; border-radius: 999px;
+  font-size: var(--step-0); text-decoration: none;
+  transition-property: color, background-color;
+  transition-duration: 0.35s;
+}
+.nav-links a[aria-current] { background: var(--orange); color: var(--green); }
+.nav-pill {
+  position: absolute; left: 0; top: 0; bottom: 0; width: 0;
+  border-radius: 999px; background: rgb(244 239 227 / 0.12);
+}
+
+.nav-call { min-height: 46px; padding-inline: 22px; }
+.nav-call:hover { background: var(--cream); border-color: var(--cream); color: var(--green); }
+
+.nav-burger, .nav-sheet { display: none; }
+
+@media (max-width: 1080px) {
+  :root { --nav-h: 68px; }
+  .nav-links, .nav-call { display: none; }
+  .nav-logo img { height: 48px; }
+  .nav-burger {
+    display: block; min-width: 88px; min-height: 44px; padding: 0 18px;
+    border: 1.5px solid var(--on-green); border-radius: 999px;
+    background: none; color: var(--on-green); font: 500 var(--step-0) var(--sans);
+  }
+  .nav-sheet {
+    position: fixed; inset: var(--nav-h) 0 0;
+    display: flex; flex-direction: column; justify-content: space-between;
+    padding: 32px var(--m) 40px;
+    background: var(--green);
+    clip-path: inset(0 0 100% 0);
+    visibility: hidden;
+    transition: clip-path 0.6s var(--ease-out), visibility 0s 0.6s;
+  }
+  .nav.is-open .nav-sheet { clip-path: inset(0 0 0 0); visibility: visible; transition-delay: 0s; }
+  .nav-sheet ul { display: grid; gap: 8px; }
+  .nav-sheet li { overflow: hidden; }
+  .nav-sheet a:not(.btn) { display: block; font: 500 var(--step-3) / 1.15 var(--serif); text-decoration: none; padding-block: 4px; }
+  .nav-sheet .btn { align-self: start; }
+}

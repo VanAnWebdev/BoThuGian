@@ -1,0 +1,49 @@
+.menu {
+  padding-block: clamp(96px, 12vw, 180px);
+  background: var(--green); color: var(--on-green);
+  border-radius: 48px 48px 0 0;
+}
+.menu-head { position: relative; display: grid; gap: 12px; }
+.menu-head h2 { font-size: var(--step-4); }
+.menu-head .lead { color: var(--on-green-soft); }
+.menu-sticker { position: absolute; right: 0; top: -20px; width: 136px; }
+
+.menu-tabs {
+  position: relative; display: flex; gap: 4px;
+  margin-top: 40px; padding: 6px;
+  overflow-x: auto; scrollbar-width: none;
+  border-radius: 999px; background: rgb(244 239 227 / 0.08);
+}
+.menu-tabs button {
+  position: relative; z-index: 1; flex: none;
+  min-height: 44px; padding: 0 20px; border: 0; border-radius: 999px;
+  background: none; color: var(--on-green); cursor: pointer;
+  font: 500 var(--step-0) var(--sans);
+  transition: color 0.3s;
+}
+.menu-tabs button:hover { color: var(--clay); }
+.menu-tabs button[aria-selected='true'] { color: var(--green); }
+.menu-pill { position: absolute; left: 0; top: 6px; bottom: 6px; width: 0; border-radius: 999px; background: var(--orange); }
+
+.menu-list {
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: clamp(32px, 6vw, 96px);
+  margin-top: 40px; min-height: 420px; align-content: start;
+}
+.menu-item {
+  display: flex; justify-content: space-between; align-items: baseline; gap: 24px;
+  margin-inline: -16px; padding: 18px 16px; border-radius: 16px;
+  transition: background-color 0.25s;
+}
+.menu-item:hover { background: rgb(244 239 227 / 0.06); }
+.menu-item h3 { font: 500 var(--step-1) / 1.3 var(--serif); letter-spacing: -0.01em; transition: color 0.25s; }
+.menu-item p { margin-top: 4px; font-size: var(--step--1); color: var(--on-green-soft); }
+.menu-tag { color: var(--leaf); font-weight: 600; }
+.menu-price { font: 500 var(--step-1) var(--serif); color: var(--clay); white-space: nowrap; }
+.menu-item:hover h3 { color: var(--clay); }
+
+@media (max-width: 760px) {
+  .menu { border-radius: 28px 28px 0 0; }
+  .menu-sticker { width: 84px; top: -64px; }
+  .menu-list { grid-template-columns: minmax(0, 1fr); min-height: 0; }
+}

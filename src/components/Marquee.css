@@ -1,0 +1,12 @@
+.mq {
+  position: relative; z-index: 2;
+  overflow: hidden;
+  background: var(--orange); color: var(--green);
+  padding-block: 14px;
+}
+.mq-track { display: flex; width: max-content; }
+.mq-track span {
+  display: flex; align-items: center; gap: 32px; padding-right: 32px;
+  font: 500 var(--step-2) / 1.35 var(--serif); white-space: nowrap; /* đủ cao cho dấu chồng (ỗ, ầ) */
+}
+.mq-track .star { width: 0.6em; color: var(--cream); }

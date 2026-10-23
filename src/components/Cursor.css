@@ -1,0 +1,24 @@
+.cursor { display: none; }
+.has-cursor .cursor { display: block; }
+.has-cursor body, .has-cursor a, .has-cursor button, .has-cursor select, .has-cursor label { cursor: none; }
+
+.cursor-dot, .cursor-ring {
+  position: fixed; left: 0; top: 0; z-index: 200;
+  pointer-events: none; border-radius: 50%;
+  opacity: 0; transition: opacity 0.3s;
+}
+.cursor.is-on .cursor-dot, .cursor.is-on .cursor-ring { opacity: 1; }
+.cursor-dot { width: 8px; height: 8px; margin: -4px 0 0 -4px; background: var(--orange); }
+.cursor-ring {
+  width: 40px; height: 40px; margin: -20px 0 0 -20px;
+  display: grid; place-items: center;
+  border: 1.5px solid var(--orange);
+  transition-property: opacity, width, height, margin, background-color, border-color;
+  transition-duration: 0.35s;
+  transition-timing-function: var(--ease-out);
+}
+.cursor.is-link .cursor-ring { width: 60px; height: 60px; margin: -30px 0 0 -30px; background: rgb(222 111 31 / 0.12); }
+.cursor.is-label .cursor-ring { width: 92px; height: 92px; margin: -46px 0 0 -46px; background: var(--orange); border-color: var(--orange); }
+.cursor.is-label .cursor-dot { opacity: 0; }
+.cursor-label { font: 600 13px / 1 var(--sans); color: var(--green); opacity: 0; transition: opacity 0.2s; }
+.cursor.is-label .cursor-label { opacity: 1; }
