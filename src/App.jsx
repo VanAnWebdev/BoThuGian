@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { ScrollTrigger } from './lib/motion.js'
+import { ScrollTrigger, staticMode } from './lib/motion.js'
 import Intro from './components/Intro.jsx'
 import Cursor from './components/Cursor.jsx'
 import Nav from './components/Nav.jsx'
@@ -16,6 +16,8 @@ import Footer from './components/Footer.jsx'
 export default function App() {
   // Tính lại vị trí các đoạn ghim khi font/ảnh tải xong (chiều cao trang thay đổi)
   useEffect(() => {
+    // Chế độ chụp: tải hết ảnh ngay, không chờ cuộn tới
+    if (staticMode) document.querySelectorAll('img[loading="lazy"]').forEach((img) => (img.loading = 'eager'))
     const refresh = () => ScrollTrigger.refresh()
     document.fonts?.ready.then(refresh)
     window.addEventListener('load', refresh)

@@ -48,7 +48,7 @@ npm test         # test logic giờ mở cửa / đặt bàn (node:test, không 
         └── Footer          # tên quán trồi từng chữ
 ```
 
-Thêm `?nointro` vào URL để bỏ qua màn intro khi test. Hiệu ứng tự tắt khi máy bật "giảm chuyển động".
+Thêm `?nointro` vào URL để bỏ qua màn intro khi test. Thêm `?static` để tắt mọi hiệu ứng và hiện đủ nội dung ở trạng thái cuối — dùng khi nhập trang vào Figma (plugin html.to.design) hoặc chụp màn hình. Hiệu ứng tự tắt khi máy bật "giảm chuyển động".
 
 ## Thay tư liệu thật
 

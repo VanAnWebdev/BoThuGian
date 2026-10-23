@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { gsap, useGSAP, DESKTOP } from '../lib/motion.js'
+import { gsap, useGSAP, DESKTOP, MOBILE } from '../lib/motion.js'
 import './Story.css'
 
 // "Ba chữ vàng" trang 2 menu
@@ -62,7 +62,7 @@ export default function Story() {
       })
 
       // Điện thoại: không ghim, từng khối hiện dần khi cuộn tới
-      mm.add('(max-width: 960px) and (prefers-reduced-motion: no-preference)', () => {
+      mm.add(MOBILE, () => {
         q('.story-step').forEach((step) =>
           gsap.from(step.children, {
             y: 40, autoAlpha: 0, stagger: 0.1, duration: 0.9, ease: 'power3.out',

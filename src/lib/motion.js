@@ -7,9 +7,13 @@ import Lenis from 'lenis'
 gsap.registerPlugin(ScrollTrigger, useGSAP)
 
 const media = (q) => typeof matchMedia !== 'undefined' && matchMedia(q).matches
-export const reduced = media('(prefers-reduced-motion: reduce)')
+const params = new URLSearchParams(location.search)
+// ?static: tắt mọi chuyển động, hiện đủ nội dung ở trạng thái cuối — dùng khi nhập vào Figma / chụp màn hình
+export const staticMode = params.has('static')
+export const reduced = staticMode || media('(prefers-reduced-motion: reduce)')
 export const finePointer = media('(hover: hover) and (pointer: fine)')
-export const DESKTOP = '(min-width: 961px) and (prefers-reduced-motion: no-preference)'
+export const DESKTOP = reduced ? 'not all' : '(min-width: 961px)'
+export const MOBILE = reduced ? 'not all' : '(max-width: 960px)'
 
 // Cuộn mượt: Lenis chạy trên ticker của GSAP để ScrollTrigger khớp từng khung hình
 export const lenis = reduced ? null : new Lenis({ lerp: 0.1, anchors: { offset: -72 } })
@@ -24,7 +28,7 @@ let resolveIntro
 export const introDone = new Promise((r) => (resolveIntro = r))
 export const finishIntro = () => resolveIntro()
 export function shouldPlayIntro() {
-  if (reduced || new URLSearchParams(location.search).has('nointro')) return false // ?nointro: bỏ qua khi QA
+  if (reduced || params.has('nointro')) return false // ?nointro: bỏ qua khi QA
   try {
     return !sessionStorage.getItem('btg-intro')
   } catch {

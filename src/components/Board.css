@@ -2,24 +2,23 @@
   position: relative; overflow: hidden;
   background: var(--green); color: var(--on-green);
 }
+/* Mặc định: dải vuốt ngang có điểm dừng (điện thoại, giảm chuyển động, ?static) */
 .board-track {
   display: flex; align-items: center; gap: clamp(20px, 2.5vw, 40px);
-  width: max-content;
-  min-height: 100svh;
-  padding: calc(var(--nav-h) + 24px) var(--m) 120px;
+  overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none;
+  padding: 96px var(--m) 64px;
 }
+.board-track > * { scroll-snap-align: start; scroll-margin-left: var(--m); }
 
 .board-intro { width: min(520px, 84vw); flex: none; display: grid; gap: 20px; justify-items: start; }
 .board-intro .lead { color: var(--on-green-soft); }
 .board-price { font: 500 var(--step-3) / 1 var(--serif); color: var(--clay); }
 .board-hint { font-size: var(--step--1); color: var(--on-green-soft); }
-.board-hint-swipe { display: none; }
+.board-hint-scroll { display: none; }
 
 .board-cut { flex: none; width: clamp(240px, 22vw, 340px); margin: 0; }
-.board-cut:nth-of-type(odd) { translate: 0 -5%; }
-.board-cut:nth-of-type(even) { translate: 0 5%; }
 .board-img { aspect-ratio: 3 / 4; border-radius: var(--radius); overflow: hidden; }
-.board-img img { width: 120%; max-width: none; height: 100%; margin-left: -10%; object-fit: cover; }
+.board-img img { width: 100%; height: 100%; object-fit: cover; }
 .board-cut figcaption { margin-top: 18px; }
 .board-cut h3 { font-size: var(--step-2); }
 .board-cut p { margin-top: 6px; color: var(--on-green-soft); font-size: var(--step-0); }
@@ -37,7 +36,20 @@
 .board-nuoc { background: var(--clay); }
 .board-nuoc p, .board-nuoc li { color: var(--green); }
 
-.board-ruler {
+.board-ruler { display: none; }
+
+/* Máy tính có hiệu ứng (JS thêm .is-pinned): ghim section, thớt trượt ngang theo cuộn dọc */
+.board.is-pinned .board-track {
+  width: max-content; min-height: 100svh;
+  overflow: visible; scroll-snap-type: none;
+  padding: calc(var(--nav-h) + 24px) var(--m) 120px;
+}
+.board.is-pinned .board-cut:nth-of-type(odd) { translate: 0 -5%; }
+.board.is-pinned .board-cut:nth-of-type(even) { translate: 0 5%; }
+.board.is-pinned .board-img img { width: 120%; max-width: none; margin-left: -10%; }
+.board.is-pinned .board-hint-scroll { display: inline; }
+.board.is-pinned .board-hint-swipe { display: none; }
+.board.is-pinned .board-ruler {
   position: absolute; left: var(--m); right: var(--m); bottom: 40px;
   display: flex; align-items: center; gap: 20px;
   font-size: var(--step--1); color: var(--on-green-soft);
@@ -45,16 +57,3 @@
 .board-cm b { font: 500 var(--step-2) var(--serif); color: var(--orange); }
 .board-bar { flex: 1; height: 6px; border-radius: 6px; background: rgb(244 239 227 / 0.14); overflow: hidden; }
 .board-bar i { display: block; height: 100%; background: var(--orange); transform-origin: left; transform: scaleX(0); }
-
-/* Điện thoại / giảm chuyển động: vuốt ngang tự nhiên, có điểm dừng */
-@media (max-width: 960px), (prefers-reduced-motion: reduce) {
-  .board-track {
-    width: auto; min-height: 0; overflow-x: auto; scroll-snap-type: x mandatory;
-    padding-block: 96px 64px; scrollbar-width: none;
-  }
-  .board-track > * { scroll-snap-align: start; scroll-margin-left: var(--m); }
-  .board-cut:nth-of-type(n) { translate: none; }
-  .board-ruler, .board-hint-scroll { display: none; }
-  .board-hint-swipe { display: inline; }
-  .board-img img { width: 100%; margin: 0; }
-}

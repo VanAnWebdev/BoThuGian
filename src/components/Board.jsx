@@ -22,6 +22,7 @@ export default function Board() {
 
       // Máy tính: ghim section, cuộn dọc → thớt trượt ngang, thước đếm 0 → 100 cm
       mm.add(DESKTOP, () => {
+        root.current.classList.add('is-pinned')
         const track = q('.board-track')[0]
         const cm = q('.board-cm b')[0]
         const bar = gsap.quickSetter(q('.board-bar i')[0], 'scaleX')
@@ -56,6 +57,7 @@ export default function Board() {
             scrollTrigger: { trigger: card, containerAnimation: slide, start: 'left 95%', end: 'left 55%', scrub: true },
           }),
         )
+        return () => root.current?.classList.remove('is-pinned')
       })
     },
     { scope: root },
