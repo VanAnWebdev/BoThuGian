@@ -52,7 +52,12 @@ export default function Hero() {
       <div className="hero-text">
         <h1>
           <span className="sr-only">{brand.name}: </span>
-          <Split text="Bò ngon từ thịt," /> <Split text="ngọt từ xương" />
+          {/* Mỗi vế slogan một dòng; dính hai từ cuối để không ngắt "tử / tế" */}
+          {brand.slogan.split(', ').map((line, i, all) => (
+            <span className="hero-line" key={line}>
+              <Split text={(line + (i < all.length - 1 ? ',' : '')).replace(/ (\S+)$/, ' $1')} />
+            </span>
+          ))}
         </h1>
         <p className="hero-lede lead">
           <strong>{brand.name}</strong> — quán bò tơ tươi và lẩu ở {brand.street}, {brand.city}.

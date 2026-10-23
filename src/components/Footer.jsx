@@ -1,25 +1,9 @@
-import { useRef } from 'react'
-import { gsap, useGSAP, reduced } from '../lib/motion.js'
 import { brand } from '../data/brand.js'
 import './Footer.css'
 
 export default function Footer() {
-  const root = useRef(null)
-
-  useGSAP(
-    () => {
-      if (reduced) return
-      // Tên quán trồi lên từng ký tự khi chạm cuối trang
-      gsap.from('.foot-name span', {
-        yPercent: 110, rotate: 8, stagger: 0.04, duration: 1, ease: 'power4.out',
-        scrollTrigger: { trigger: '.foot-name', start: 'top 95%' },
-      })
-    },
-    { scope: root },
-  )
-
   return (
-    <footer className="foot" ref={root}>
+    <footer className="foot">
       <div className="foot-top wrap">
         <div className="foot-brand">
           <img src="/images/logo.webp" alt={brand.name} width="446" height="512" loading="lazy" />
@@ -37,9 +21,6 @@ export default function Footer() {
           <a href={brand.maps} target="_blank" rel="noreferrer">Google Maps</a>
         </nav>
       </div>
-      <p className="foot-name" aria-hidden="true">
-        {[...brand.name].map((ch, i) => <span key={i}>{ch === ' ' ? ' ' : ch}</span>)}
-      </p>
       <p className="foot-copy wrap">© {new Date().getFullYear()} {brand.name}</p>
     </footer>
   )
