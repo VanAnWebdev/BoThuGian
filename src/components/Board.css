@@ -12,7 +12,7 @@
 
 .board-intro { width: min(520px, 84vw); flex: none; display: grid; gap: 20px; justify-items: start; }
 .board-intro .lead { color: var(--on-green-soft); }
-.board-price { font: 500 var(--step-3) / 1 var(--display); color: var(--clay); }
+.board-price { font: 500 var(--step-3) / 1 var(--num); color: var(--clay); }
 .board-hint { font-size: var(--step--1); color: var(--on-green-soft); }
 .board-hint-scroll { display: none; }
 
@@ -54,6 +54,6 @@
   display: flex; align-items: center; gap: 20px;
   font-size: var(--step--1); color: var(--on-green-soft);
 }
-.board-cm b { font: 500 var(--step-2) var(--display); color: var(--orange); }
+.board-cm b { font: 500 var(--step-2) var(--num); color: var(--orange); }
 .board-bar { flex: 1; height: 6px; border-radius: 6px; background: rgb(244 239 227 / 0.14); overflow: hidden; }
 .board-bar i { display: block; height: 100%; background: var(--orange); transform-origin: left; transform: scaleX(0); }

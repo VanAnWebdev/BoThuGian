@@ -137,6 +137,4 @@ export const signature = [
     fact: 'Xương ống hầm trong nước dùng đậu đen, phục vụ kèm ống hút lớn để hút phần tủy béo ngậy nóng hổi bên trong.' },
   { name: 'Bò tơ xông hơi', price: 165000, tag: 'Must try', img: 'xong-hoi', w: 540, h: 488, disc: 'var(--orange)',
     fact: 'Bò tơ tươi tẩm ướp gia vị, xông hơi ngay tại bàn bằng đá nóng, thơm nghi ngút mùi sả và lá tía tô.' },
-  { name: 'Nem chua bò tơ', price: 109000, tag: 'Best seller', img: 'nem-chua', w: 477, h: 661, disc: 'var(--leaf)',
-    fact: 'Da bò tơ Duy Xuyên thái mỏng, trộn đều thịt bò tươi ngọt mềm, lên men tự nhiên bằng vỏ bắp tươi.' },
 ]

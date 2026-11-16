@@ -8,6 +8,7 @@ import Marquee from './components/Marquee.jsx'
 import Story from './components/Story.jsx'
 import Board from './components/Board.jsx'
 import Signature from './components/Signature.jsx'
+import NemChua from './components/NemChua.jsx'
 import Space from './components/Space.jsx'
 import Menu from './components/Menu.jsx'
 import Booking from './components/Booking.jsx'
@@ -35,6 +36,7 @@ export default function App() {
         <Story />
         <Board />
         <Signature />
+        <NemChua />
         <Space />
         <Menu />
         <Booking />

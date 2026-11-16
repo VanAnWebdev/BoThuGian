@@ -12,21 +12,27 @@ npm test         # test logic giờ mở cửa / đặt bàn (node:test, không 
 ## Cấu trúc
 
 ```
-├── index.html              # meta SEO, font Work Sans (có tiếng Việt)
+├── index.html              # meta SEO, font Baloo 2 + Comfortaa (Google Fonts)
 ├── profile.md              # brand profile
+├── nguon/                  # file gốc khách gửi (ảnh to, font, logo gốc) — KHÔNG đưa lên git
+│   ├── anh/nem-chua/       # ảnh gốc đã đặt tên theo nội dung
+│   ├── font/               # lucky-chunks/, comfortaa/
+│   └── logo/
 ├── public/
 │   ├── favicon.png
+│   ├── fonts/lucky-chunks.woff2   # chỉ dùng cho số/giá (thiếu dấu tiếng Việt)
 │   └── images/
 │       ├── logo.png        # logo gốc đã tách nền (dùng cho in ấn / og:image)
 │       ├── logo.webp       # bản nhẹ cho thanh điều hướng
 │       ├── dau-bep.webp    # chân dung đầu bếp (trang 11 menu)
+│       ├── nem-chua/       # ảnh section Nem chua (xuất từ nguon/, WebP)
 │       ├── thot/           # 5 phần thịt của "thớt bò 1 mét" (hero)
 │       └── mon/            # ảnh món cắt nền + khói (trích từ menu PDF)
 └── src/
     ├── main.jsx · App.jsx  # ghép các section theo thứ tự trang
     ├── data/
     │   ├── brand.js        # địa chỉ, giờ, hotline, link — sửa 1 chỗ dùng mọi nơi
-    │   └── menu.js         # 12 nhóm, 75 món + 6 món "phải thử"
+    │   └── menu.js         # 12 nhóm, 75 món + 3 món "phải thử"
     ├── lib/
     │   ├── motion.js       # GSAP + ScrollTrigger + Lenis (cuộn mượt), intro, nút hút chuột, đếm số
     │   ├── hours.js        # trạng thái mở/đóng theo giờ VN, khung giờ đặt bàn
@@ -41,6 +47,7 @@ npm test         # test logic giờ mở cửa / đặt bàn (node:test, không 
         ├── Marquee         # băng chữ chạy theo vận tốc cuộn
         ├── Story           # Ba chữ vàng: ghim + lật Tươi → Chill → Tâm
         ├── Board           # Thớt bò 1 mét: ghim + trượt ngang + thước cm
+        ├── NemChua         # nem chua bò tơ: cách làm, đóng gói mang về, bài báo Travel+
         ├── Signature       # món phải thử so le, xoay theo cuộn, nghiêng 3D theo chuột
         ├── Space           # ảnh polaroid bay vào xếp lại, số đếm đánh giá
         ├── Menu            # tab 12 nhóm, pill trượt, món hiện lần lượt

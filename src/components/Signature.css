@@ -23,7 +23,7 @@
 
 .sig-text { display: grid; gap: 16px; justify-items: start; max-width: 32em; }
 .sig-text h3 { font-size: var(--step-3); }
-.sig-price { font: 500 var(--step-2) / 1 var(--display); color: var(--orange-ink); }
+.sig-price { font: 500 var(--step-2) / 1 var(--num); color: var(--orange-ink); }
 .sig-link { position: relative; font-weight: 600; text-decoration: none; }
 .sig-link::after {
   content: ''; position: absolute; left: 0; right: 0; bottom: -3px; height: 2px;

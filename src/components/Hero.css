@@ -23,7 +23,7 @@
 .hero-stats { margin-top: 48px; display: flex; flex-wrap: wrap; gap: 12px 44px; }
 .hero-stats div { display: flex; flex-direction: column-reverse; }
 .hero-stats dt { font-size: var(--step--1); color: var(--ink-soft); }
-.hero-stats dd { font: 500 var(--step-2) / 1 var(--display); }
+.hero-stats dd { font: 500 var(--step-2) / 1 var(--num); }
 .hero-stats .star { width: 0.6em; color: var(--orange); }
 
 .hero-visual {

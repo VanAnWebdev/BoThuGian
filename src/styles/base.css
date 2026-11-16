@@ -1,3 +1,9 @@
+@font-face {
+  font-family: 'Lucky Chunks';
+  src: url('/fonts/lucky-chunks.woff2') format('woff2');
+  font-display: swap;
+}
+
 /* Token thương hiệu — xem profile.md mục 3. Bố cục theo mẫu Figma: nền kem, header xanh rêu, nút cam bo tròn. */
 :root {
   --green: #09321d;    /* Moss Green */
@@ -12,8 +18,10 @@
   --on-green: #f5f1d8;
   --on-green-soft: #b7c2b2;
 
-  /* Lucky Chunks chưa có file webfont → dùng nếu máy đã cài, còn lại Baloo 2 (có tiếng Việt) */
-  --display: 'Lucky Chunks', 'Baloo 2', system-ui, sans-serif;
+  /* Lucky Chunks thiếu 93/134 ký tự có dấu tiếng Việt → chỉ dùng cho số và giá (--num);
+     tiêu đề tiếng Việt dùng Baloo 2 để không lẫn font giữa chữ */
+  --display: 'Baloo 2', system-ui, sans-serif;
+  --num: 'Lucky Chunks', 'Baloo 2', system-ui, sans-serif;
   --sans: 'Comfortaa', system-ui, sans-serif;
   --step--1: 0.875rem;
   --step-0: clamp(1rem, 0.96rem + 0.2vw, 1.125rem);

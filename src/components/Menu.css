@@ -39,7 +39,7 @@
 .menu-item h3 { font: 500 var(--step-1) / 1.3 var(--display); letter-spacing: -0.01em; transition: color 0.25s; }
 .menu-item p { margin-top: 4px; font-size: var(--step--1); color: var(--on-green-soft); }
 .menu-tag { color: var(--leaf); font-weight: 600; }
-.menu-price { font: 500 var(--step-1) var(--display); color: var(--clay); white-space: nowrap; }
+.menu-price { font: 500 var(--step-1) var(--num); color: var(--clay); white-space: nowrap; }
 .menu-item:hover h3 { color: var(--clay); }
 
 @media (max-width: 760px) {
