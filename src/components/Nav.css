@@ -8,7 +8,7 @@
 }
 .nav.is-hidden:not(.is-open) { translate: 0 -100%; }
 
-.nav-logo img { height: 60px; width: auto; transition: rotate 0.4s var(--ease-out), scale 0.4s var(--ease-out); }
+.nav-logo img { height: 70px; width: auto; transition: rotate 0.4s var(--ease-out), scale 0.4s var(--ease-out); }
 .nav-logo:hover img { rotate: -6deg; scale: 1.06; }
 
 .nav-links { position: relative; display: flex; gap: 4px; }
@@ -51,6 +51,6 @@
   .nav.is-open .nav-sheet { clip-path: inset(0 0 0 0); visibility: visible; transition-delay: 0s; }
   .nav-sheet ul { display: grid; gap: 8px; }
   .nav-sheet li { overflow: hidden; }
-  .nav-sheet a:not(.btn) { display: block; font: 500 var(--step-3) / 1.15 var(--serif); text-decoration: none; padding-block: 4px; }
+  .nav-sheet a:not(.btn) { display: block; font: 500 var(--step-3) / 1.15 var(--display); text-decoration: none; padding-block: 4px; }
   .nav-sheet .btn { align-self: start; }
 }

@@ -27,8 +27,9 @@ export function Sticker({ text, className = '', ...props }) {
       </defs>
       <circle cx="60" cy="60" r="58" fill="var(--orange)" />
       <g className="sticker-spin">
-        <text fontSize="11" fontWeight="600" letterSpacing="2.2" fill="var(--green)" fontFamily="var(--sans)">
-          <textPath href={`#${ring}`}>{text}</textPath>
+        <text fontSize="10" fontWeight="700" fill="var(--green)" fontFamily="var(--sans)">
+          {/* textLength = chu vi vòng (2π·44): chữ luôn vừa khít một vòng dù font rộng hay hẹp */}
+          <textPath href={`#${ring}`} textLength="272" lengthAdjust="spacing">{text}</textPath>
         </text>
       </g>
       <path d="M60 38 L66 54 L82 60 L66 66 L60 82 L54 66 L38 60 L54 54 Z" fill="var(--cream)" />

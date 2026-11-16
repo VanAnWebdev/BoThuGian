@@ -6,7 +6,7 @@ export default function Footer() {
     <footer className="foot">
       <div className="foot-top wrap">
         <div className="foot-brand">
-          <img src="/images/logo.webp" alt={brand.name} width="446" height="512" loading="lazy" />
+          <img src="/images/logo.webp" alt={brand.name} width="640" height="543" loading="lazy" />
           <p>{brand.slogan}</p>
         </div>
         <dl className="foot-facts">

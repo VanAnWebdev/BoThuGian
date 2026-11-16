@@ -13,13 +13,13 @@
   background: var(--paper); border-radius: 8px; box-shadow: var(--shadow);
 }
 .polaroid img, .space-video { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 4px; }
-.polaroid figcaption { padding: 12px 4px 16px; font: 500 var(--step-0) var(--serif); text-align: center; }
+.polaroid figcaption { padding: 12px 4px 16px; font: 500 var(--step-0) var(--display); text-align: center; }
 .space-video { grid-column: span 2; aspect-ratio: auto; height: 100%; }
 
 .space-proof { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 32px 64px; align-items: start; }
 .space-stats { display: grid; grid-template-columns: repeat(3, auto); justify-content: start; gap: 24px 48px; }
 .space-stats div { display: flex; flex-direction: column-reverse; gap: 6px; }
-.space-stats dd { font: 500 var(--step-3) / 1 var(--serif); color: var(--green); }
+.space-stats dd { font: 500 var(--step-3) / 1 var(--display); color: var(--green); }
 .space-stats dt { font-size: var(--step--1); color: var(--ink-soft); max-width: 14ch; }
 .space-stats .star { width: 0.55em; color: var(--orange); }
 .space-topics { display: flex; flex-wrap: wrap; gap: 10px; }

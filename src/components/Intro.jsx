@@ -42,8 +42,8 @@ export default function Intro() {
   return (
     <div className="intro" ref={root} aria-hidden="true">
       <div className="intro-logo">
-        <img className="intro-ghost" src="/images/logo.webp" alt="" width="446" height="512" />
-        <img className="intro-fill" src="/images/logo.webp" alt="" width="446" height="512" />
+        <img className="intro-ghost" src="/images/logo.webp" alt="" width="640" height="543" />
+        <img className="intro-fill" src="/images/logo.webp" alt="" width="640" height="543" />
       </div>
       <p className="intro-note">Đang rót bia… <span className="intro-pct num">0</span>%</p>
     </div>

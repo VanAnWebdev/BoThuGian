@@ -1,19 +1,20 @@
 /* Token thương hiệu — xem profile.md mục 3. Bố cục theo mẫu Figma: nền kem, header xanh rêu, nút cam bo tròn. */
 :root {
-  --green: #102318;    /* xanh rêu đậm */
-  --cream: #f4efe3;    /* kem nền sáng */
-  --paper: #fbf8f1;    /* bề mặt nổi trên nền kem */
-  --orange: #de6f1f;   /* cam đậm: nút hành động */
-  --orange-ink: #a3480b; /* cam cho chữ nhỏ trên nền kem (≥5:1) */
-  --clay: #db8a34;     /* cam đất */
-  --leaf: #8fc49a;     /* xanh lá non */
-  --ink: #102318;
-  --ink-soft: #4a5a4e;
-  --on-green: #f4efe3;
-  --on-green-soft: #b9c2b4;
+  --green: #09321d;    /* Moss Green */
+  --cream: #f5f1d8;    /* kem */
+  --paper: #fbf9ec;    /* bề mặt nổi trên nền kem */
+  --orange: #eb860d;   /* Radiate Orange: nút hành động */
+  --orange-ink: #9c4f00; /* cam cho chữ nhỏ trên nền kem (≥5:1) */
+  --clay: #eb860d;     /* giá, điểm nhấn trên nền xanh */
+  --leaf: #8fc49a;     /* xanh lá non (phụ) */
+  --ink: #09321d;
+  --ink-soft: #46584c;
+  --on-green: #f5f1d8;
+  --on-green-soft: #b7c2b2;
 
-  --serif: 'Fraunces', Georgia, serif;
-  --sans: 'Be Vietnam Pro', system-ui, sans-serif;
+  /* Lucky Chunks chưa có file webfont → dùng nếu máy đã cài, còn lại Baloo 2 (có tiếng Việt) */
+  --display: 'Lucky Chunks', 'Baloo 2', system-ui, sans-serif;
+  --sans: 'Comfortaa', system-ui, sans-serif;
   --step--1: 0.875rem;
   --step-0: clamp(1rem, 0.96rem + 0.2vw, 1.125rem);
   --step-1: clamp(1.2rem, 1.08rem + 0.5vw, 1.5rem);
@@ -37,12 +38,13 @@ body {
   font: 400 var(--step-0) / 1.6 var(--sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-synthesis: none; /* font tiêu đề chỉ có 1 độ đậm: không cho trình duyệt tự làm đậm giả */
   overflow-x: clip;
 }
 img, video { display: block; max-width: 100%; height: auto; }
 h1, h2, h3 {
   margin: 0;
-  font-family: var(--serif);
+  font-family: var(--display);
   font-weight: 500;
   line-height: 1.08;
   letter-spacing: -0.02em;

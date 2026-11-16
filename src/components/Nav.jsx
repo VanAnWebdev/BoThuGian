@@ -66,7 +66,7 @@ export default function Nav() {
   return (
     <header className={`nav${open ? ' is-open' : ''}`} ref={root}>
       <a href="#top" className="nav-logo" aria-label={`${brand.name} — về đầu trang`}>
-        <img src="/images/logo.webp" alt="" width="446" height="512" />
+        <img src="/images/logo.webp" alt="" width="640" height="543" />
       </a>
 
       <nav className="nav-links" aria-label="Điều hướng chính" onMouseLeave={() => setPillAt(active)}>

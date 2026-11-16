@@ -35,24 +35,23 @@
 
 ## 3. Bộ nhận diện hình ảnh
 
-### Logo
-- **Logo chính (khách gửi):** cốc bia bọt trào, chữ "BÒ THƯ GIÃN" vẽ tay màu cam–vàng mật ong, viền nâu đậm; chữ "Ò" có sừng bò, quai cốc biến thành **đuôi bò** → ghép *bò + bia + chill*.
-- **Logo cũ trong menu PDF:** mascot người đàn ông cười cầm bảng gỗ "BÒ THƯ GIÃN" + ruy băng xanh "Vị riêng – Thư giãn chất".
-- ⚠️ **Hai logo đang dùng song song** → cần chốt logo chính thức. Website dùng logo cốc bia (theo dataset).
+### Logo (chốt 16/11/2026)
+- **Logo chính:** mascot **bò đầu bếp** (mũ trắng, khăn xanh, giơ ngón cái) + chữ "Bò Thư Giãn" xanh rêu viền kem. File gốc PNG nền trong suốt → `public/images/logo.png`.
+- Logo cũ (không dùng nữa): cốc bia bọt trào; mascot người đàn ông cầm bảng gỗ trên menu in.
 
-### Màu thương hiệu
+### Màu thương hiệu (chốt 16/11/2026)
 
-| Tên | HEX | Ý nghĩa | Vai trò trên web |
-| --- | --- | --- | --- |
-| Xanh rêu đậm | `#102318` | Không gian sân vườn | Nền chính (ground) |
-| Cam đất | `#DB8A34` | Vị riêng, chế biến riêng | Tiêu đề nhóm món, đĩa món |
-| Cam đậm (nhấn) | `#DE6F1F` | Vị riêng, chế biến riêng | Nút hành động (duy nhất) |
-| Xanh lá non | `#8FC49A` | Nguyên liệu tươi | Trạng thái "đang mở", đĩa món |
-| Kem nền sáng | `#F4EFE3` | Nguyên liệu tử tế | Chữ chính, thẻ đặt bàn |
+| Tên | HEX | Vai trò trên web |
+| --- | --- | --- |
+| Moss Green | `#09321D` | Header, section tối, chữ chính |
+| Radiate Orange | `#EB860D` | Nút hành động, băng chữ chạy, giá trên nền tối |
+| Kem | `#F5F1D8` | Nền chính, chữ trên nền tối |
 
-### Typography (web)
-- **Work Sans** (Google Fonts, có subset tiếng Việt) — 300 cho tiêu đề lớn, 400/500 cho chữ thường.
-- Logo là chữ vẽ tay → không dùng font "bắt chước" logo, để logo đứng riêng.
+Phụ (chỉ dùng trong web, không thuộc bảng màu): cam đậm `#9C4F00` cho chữ nhỏ/giá trên nền kem (đủ tương phản), xanh lá non `#8FC49A` cho nhãn, đĩa món.
+
+### Typography (chốt 16/11/2026)
+- **Lucky Chunks** — tiêu đề. ⚠️ Chưa có file font cho web và chưa kiểm tra bộ dấu tiếng Việt → web tạm dùng **Baloo 2 ExtraBold** (Google Fonts, có tiếng Việt), dáng tròn đậm gần giống.
+- **Comfortaa** — chữ thường (Google Fonts, có tiếng Việt).
 
 ### Ngôn ngữ hình ảnh
 - Ảnh món trong menu: **cutout nền trong suốt** trên nền đá xám tối, ánh sáng ấm → hợp nền tối.
