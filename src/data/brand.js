@@ -14,6 +14,8 @@ export const brand = {
   mapEmbed: `https://www.google.com/maps?q=${encodeURIComponent(place)}&ll=16.0343683,108.2172805&z=16&output=embed`,
   rating: '4,6',
   reviews: 459,
+  // ⚠️ Thông tin chuyển khoản MINH HOẠ cho giao diện thanh toán — thay bằng tài khoản thật của quán
+  bank: { name: 'Ngân hàng (cập nhật)', account: '0000 0000 0000', holder: 'BO THU GIAN' },
   // Video thật của quán (đặt file vào public/media/). null = dùng ảnh.
   video: null, // ví dụ: { src: '/media/quan.mp4', poster: '/media/quan.jpg' }
 }
