@@ -3,6 +3,7 @@ import { update } from '../shared/store.js'
 import { useMenu, categories, seedMenu, resetMenu } from '../shared/menuData.js'
 import { formatPrice } from '../data/menu.js'
 import { validateDish } from './menuForm.js'
+import { demo } from '../shared/demo.js'
 import './menu-admin.css'
 
 const TAGS = ['', 'Best seller', 'Must try', 'Đặc sản Gia Lai']
@@ -12,9 +13,9 @@ const searchText = (s) => s.toLowerCase().normalize('NFD').replace(/[\u0300-\u03
 export default function MenuAdmin() {
   const items = useMenu()
   const [cat, setCat] = useState('all')
-  const [q, setQ] = useState('')
+  const [q, setQ] = useState(demo === 'menu-empty' ? 'pizza' : '')
   const [availability, setAvailability] = useState('all')
-  const [editing, setEditing] = useState(null)
+  const [editing, setEditing] = useState(() => demo === 'menu-add' ? blank() : demo === 'menu-edit' ? { ...blank(), ...items[0] } : null)
   const [message, setMessage] = useState('')
   const saveItems = (fn) => update('menu', seedMenu(), fn)
   const out = items.filter((it) => !it.available).length
