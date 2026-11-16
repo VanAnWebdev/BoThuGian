@@ -57,6 +57,9 @@
 }
 
 @media (max-width: 960px) {
+  /* mỗi vế slogan ~10 lần cỡ chữ: chia theo bề ngang màn hình để luôn 2 dòng (360px vẫn vừa) */
+  .hero h1 { font-size: clamp(1.6rem, calc((100vw - 2 * var(--m)) / 10.6), 3.6rem); }
+  .hero-stats { gap: 12px 24px; }
   .hero { grid-template-columns: minmax(0, 1fr); padding-top: calc(var(--nav-h) + 40px); }
   .hero-visual { width: min(78%, 420px); margin: 24px 0 48px; justify-self: end; }
   .hero-sticker { width: 96px; }
