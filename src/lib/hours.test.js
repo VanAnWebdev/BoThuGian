@@ -51,3 +51,14 @@ test('giờ đã qua bị ẩn khi đặt cho hôm nay', async () => {
   assert.equal(slotsFor('2026-11-17', now)[0], '18:30')
   assert.equal(slotsFor('2026-11-18', now).length, 13)
 })
+
+test('kiểm tra ngày giờ lúc gửi', async () => {
+  const { isBookable } = await import('./hours.js')
+  const now = at('2026-11-17T11:10:00Z') // 18:10 VN
+  assert.equal(isBookable('2026-11-17', '18:30', now), true)
+  assert.equal(isBookable('2026-11-17', '18:00', now), false) // giờ đã qua
+  assert.equal(isBookable('2026-11-17', undefined, now), false) // chưa chọn giờ
+  assert.equal(isBookable('2026-11-16', '18:30', now), false) // ngày đã qua
+  assert.equal(isBookable('2026-12-30', '18:30', now), false) // quá 14 ngày
+  assert.equal(isBookable('2026-11-17', '21:00', at('2026-11-17T15:10:00Z')), false) // 22:10: hôm nay hết nhận khách
+})

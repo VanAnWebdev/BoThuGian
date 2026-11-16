@@ -43,7 +43,7 @@ export default function Nav() {
       ScrollTrigger.create({
         start: 0,
         end: 'max',
-        onRefresh: pickActive,
+        onRefresh: () => requestAnimationFrame(pickActive), // đo sau khi ScrollTrigger tính xong bố cục
         onUpdate: (self) => root.current.classList.toggle('is-hidden', self.direction === 1 && self.scroll() > 300),
       })
       pickActive()

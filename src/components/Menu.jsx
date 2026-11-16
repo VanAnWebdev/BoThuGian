@@ -16,17 +16,23 @@ export default function Menu() {
 
   useGSAP(
     () => {
-      // Pill cam trượt tới tab đang chọn; hàng tab tự cuộn để tab luôn trong tầm nhìn
-      const tab = tabs.current[cat]
-      gsap.to(pill.current, { x: tab.offsetLeft, width: tab.offsetWidth, duration: first.current ? 0 : 0.5, ease: 'power3.out' })
-      tab.parentNode.scrollTo({ left: tab.offsetLeft - 24, behavior: reduced ? 'auto' : 'smooth' })
-      if (reduced) return
+      // Tab xuống dòng khi hẹp → pill trượt cả ngang lẫn dọc; đổi cỡ màn hình thì đặt lại
+      const place = (duration) => {
+        const tab = tabs.current[cat]
+        gsap.to(pill.current, { x: tab.offsetLeft, y: tab.offsetTop, width: tab.offsetWidth, height: tab.offsetHeight, duration, ease: 'power3.out' })
+      }
+      place(first.current || reduced ? 0 : 0.5)
+      const onResize = () => place(0)
+      addEventListener('resize', onResize)
+      const cleanup = () => removeEventListener('resize', onResize)
+      if (reduced) return cleanup
       // Món hiện lần lượt: lần đầu khi cuộn tới, sau đó mỗi lần đổi tab
       gsap.from('.menu-item', {
         y: 28, autoAlpha: 0, stagger: 0.035, duration: 0.6, ease: 'power3.out',
         scrollTrigger: first.current ? { trigger: '.menu-list', start: 'top bottom' } : undefined,
       })
       first.current = false
+      return cleanup
     },
     { scope: root, dependencies: [cat] },
   )

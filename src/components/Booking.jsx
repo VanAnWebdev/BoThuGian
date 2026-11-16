@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { gsap, useGSAP, reduced } from '../lib/motion.js'
 import { brand } from '../data/brand.js'
-import { openStatus, bookingDays, slotsFor } from '../lib/hours.js'
+import { openStatus, bookingDays, slotsFor, isBookable } from '../lib/hours.js'
 import { Btn, Split } from './ui.jsx'
 import './Booking.css'
 
@@ -9,11 +9,14 @@ export default function Booking() {
   const root = useRef(null)
   const [status, setStatus] = useState(openStatus)
   const [message, setMessage] = useState(null)
-  const [days] = useState(() => bookingDays())
+  const [error, setError] = useState(null)
+  // Tính lại mỗi lần vẽ (đồng hồ trạng thái vẽ lại mỗi phút): qua 22:00 hay qua nửa đêm danh sách tự đổi
+  const days = bookingDays()
   const [date, setDate] = useState(days[0].value)
-  const times = slotsFor(date)
+  const pickedDate = days.some((d) => d.value === date) ? date : days[0].value
+  const times = slotsFor(pickedDate)
   const [time, setTime] = useState('18:30')
-  const pickedTime = times.includes(time) ? time : times[0] // đổi sang hôm nay mà giờ đã qua → giờ gần nhất
+  const pickedTime = times.includes(time) ? time : times[0] // giờ đã chọn vừa qua → giờ gần nhất (có báo bên dưới)
 
   useEffect(() => {
     const t = setInterval(() => setStatus(openStatus()), 60_000)
@@ -45,6 +48,11 @@ export default function Booking() {
   function submit(e) {
     e.preventDefault()
     const f = Object.fromEntries(new FormData(e.currentTarget))
+    if (!isBookable(f.date, f.time)) {
+      setError('Ngày hoặc giờ bạn chọn vừa qua mất rồi, chọn lại giúp quán nhé.')
+      return
+    }
+    setError(null)
     const [y, m, d] = f.date.split('-')
     setMessage(
       `Đặt bàn Bò Thư Giãn: ${f.name.trim()}, SĐT ${f.phone.trim()}, ${f.people} người, ${f.time} ngày ${d}/${m}/${y}.` +
@@ -96,7 +104,7 @@ export default function Booking() {
                 <div className="book-chip-row">
                   {days.map((d) => (
                     <label className="book-chip" key={d.value}>
-                      <input type="radio" name="date" value={d.value} checked={date === d.value} onChange={() => setDate(d.value)} />
+                      <input type="radio" name="date" value={d.value} checked={pickedDate === d.value} onChange={() => (setDate(d.value), setError(null))} />
                       <span><b>{d.label}</b>{d.date}</span>
                     </label>
                   ))}
@@ -107,11 +115,14 @@ export default function Booking() {
                 <div className="book-chip-grid">
                   {times.map((t) => (
                     <label className="book-chip" key={t}>
-                      <input type="radio" name="time" value={t} checked={pickedTime === t} onChange={() => setTime(t)} />
+                      <input type="radio" name="time" value={t} checked={pickedTime === t} onChange={() => (setTime(t), setError(null))} />
                       <span className="num">{t}</span>
                     </label>
                   ))}
                 </div>
+                {time !== pickedTime && pickedDate === days[0].value && days[0].label === 'Hôm nay' && (
+                  <p className="book-hint">{time} đã qua, quán chọn giúp {pickedTime}.</p>
+                )}
               </fieldset>
               <label>
                 <span>Số người</span>
@@ -121,6 +132,7 @@ export default function Booking() {
                 <span>Ghi chú</span>
                 <input name="note" maxLength={120} placeholder="Sinh nhật, bàn ngoài trời…" />
               </label>
+              {error && <p className="full book-error" role="alert">{error}</p>}
               <Btn type="submit" className="full" data-cursor="Gửi">Gửi yêu cầu đặt bàn</Btn>
             </form>
           )}

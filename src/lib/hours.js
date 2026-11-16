@@ -48,3 +48,7 @@ export function bookingDays(d = new Date(), count = 14) {
 const toMinutes = (s) => s.split(':').reduce((h, m) => h * 60 + Number(m))
 export const slotsFor = (date, d = new Date()) =>
   date === vnDate(d) ? slots.filter((s) => toMinutes(s) > vnMinutes(d)) : slots
+
+// Kiểm tra lại lúc bấm gửi: ngày còn trong danh sách và giờ chưa qua
+export const isBookable = (date, time, d = new Date()) =>
+  bookingDays(d).some((x) => x.value === date) && slotsFor(date, d).includes(time)

@@ -9,10 +9,9 @@
 .menu-sticker { position: absolute; right: 0; top: -20px; width: 136px; }
 
 .menu-tabs {
-  position: relative; display: flex; gap: 4px;
+  position: relative; display: flex; flex-wrap: wrap; gap: 4px; /* xuống dòng: luôn thấy đủ 12 nhóm */
   margin-top: 40px; padding: 6px;
-  overflow-x: auto; scrollbar-width: none;
-  border-radius: 999px; background: rgb(244 239 227 / 0.08);
+  border-radius: 28px; background: rgb(244 239 227 / 0.08);
 }
 .menu-tabs button {
   position: relative; z-index: 1; flex: none;
@@ -23,7 +22,7 @@
 }
 .menu-tabs button:hover { color: var(--clay); }
 .menu-tabs button[aria-selected='true'] { color: var(--green); }
-.menu-pill { position: absolute; left: 0; top: 6px; bottom: 6px; width: 0; border-radius: 999px; background: var(--orange); }
+.menu-pill { position: absolute; left: 0; top: 0; width: 0; height: 0; border-radius: 999px; background: var(--orange); }
 
 .menu-list {
   display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
