@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { gsap, useGSAP, reduced } from '../lib/motion.js'
 import { brand } from '../data/brand.js'
-import { openStatus, defaultBookingDate, slots } from '../lib/hours.js'
+import { openStatus, bookingDays, slotsFor } from '../lib/hours.js'
 import { Btn, Split } from './ui.jsx'
 import './Booking.css'
 
@@ -9,6 +9,11 @@ export default function Booking() {
   const root = useRef(null)
   const [status, setStatus] = useState(openStatus)
   const [message, setMessage] = useState(null)
+  const [days] = useState(() => bookingDays())
+  const [date, setDate] = useState(days[0].value)
+  const times = slotsFor(date)
+  const [time, setTime] = useState('18:30')
+  const pickedTime = times.includes(time) ? time : times[0] // đổi sang hôm nay mà giờ đã qua → giờ gần nhất
 
   useEffect(() => {
     const t = setInterval(() => setStatus(openStatus()), 60_000)
@@ -85,16 +90,29 @@ export default function Booking() {
                 <span>Số điện thoại</span>
                 <input name="phone" type="tel" required autoComplete="tel" inputMode="tel" pattern="[0-9 +.]{9,15}" placeholder="09xx xxx xxx" />
               </label>
-              <label>
-                <span>Ngày</span>
-                <input name="date" type="date" required defaultValue={defaultBookingDate()} min={defaultBookingDate()} />
-              </label>
-              <label>
-                <span>Giờ</span>
-                <select name="time" defaultValue="18:30">
-                  {slots.map((s) => <option key={s}>{s}</option>)}
-                </select>
-              </label>
+              {/* Ngày & giờ: nút chọn tự làm thay lịch/danh sách của trình duyệt (không đổi được font, màu) */}
+              <fieldset className="full book-chips book-days">
+                <legend>Ngày</legend>
+                <div className="book-chip-row">
+                  {days.map((d) => (
+                    <label className="book-chip" key={d.value}>
+                      <input type="radio" name="date" value={d.value} checked={date === d.value} onChange={() => setDate(d.value)} />
+                      <span><b>{d.label}</b>{d.date}</span>
+                    </label>
+                  ))}
+                </div>
+              </fieldset>
+              <fieldset className="full book-chips">
+                <legend>Giờ</legend>
+                <div className="book-chip-grid">
+                  {times.map((t) => (
+                    <label className="book-chip" key={t}>
+                      <input type="radio" name="time" value={t} checked={pickedTime === t} onChange={() => setTime(t)} />
+                      <span className="num">{t}</span>
+                    </label>
+                  ))}
+                </div>
+              </fieldset>
               <label>
                 <span>Số người</span>
                 <input name="people" type="number" min="1" max="60" defaultValue="4" required />

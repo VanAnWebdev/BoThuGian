@@ -33,21 +33,22 @@ export default function Nav() {
 
   useGSAP(
     () => {
-      links.forEach(([href], i) =>
-        ScrollTrigger.create({
-          trigger: href,
-          start: 'top center',
-          end: 'bottom center',
-          refreshPriority: -1, // tính sau các đoạn ghim bên dưới
-          onToggle: (self) => self.isActive && setActive(i),
-        }),
-      )
+      // Mục đang xem = section cuối cùng có mép trên đã qua giữa màn hình (đo trực tiếp, không phụ thuộc thứ tự trigger)
+      const sections = links.map(([href]) => document.querySelector(href))
+      const pickActive = () => {
+        const mid = innerHeight / 2
+        setActive(sections.reduce((cur, el, i) => (el && el.getBoundingClientRect().top <= mid ? i : cur), 0))
+      }
       // Cuộn xuống thì ẩn thanh điều hướng, cuộn lên thì hiện lại
       ScrollTrigger.create({
         start: 0,
         end: 'max',
+        onRefresh: pickActive,
         onUpdate: (self) => root.current.classList.toggle('is-hidden', self.direction === 1 && self.scroll() > 300),
       })
+      pickActive()
+      addEventListener('scroll', pickActive, { passive: true })
+      return () => removeEventListener('scroll', pickActive)
     },
     { scope: root },
   )

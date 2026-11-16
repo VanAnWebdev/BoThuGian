@@ -25,3 +25,26 @@ export const slots = Array.from({ length: (LAST_SEATING - OPEN) / 30 + 1 }, (_, 
   const m = OPEN + i * 30
   return `${Math.floor(m / 60)}:${m % 60 ? '30' : '00'}`
 })
+
+const WEEKDAY = ['CN', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7']
+
+// Các ngày cho chọn khi đặt bàn, bắt đầu từ ngày đặt được sớm nhất
+export function bookingDays(d = new Date(), count = 14) {
+  const [y, m, day] = defaultBookingDate(d).split('-').map(Number)
+  const today = vnDate(d)
+  return Array.from({ length: count }, (_, i) => {
+    const t = new Date(Date.UTC(y, m - 1, day + i))
+    const value = t.toISOString().slice(0, 10)
+    const ahead = Math.round((t - new Date(today + 'T00:00:00Z')) / 864e5)
+    return {
+      value,
+      label: ahead === 0 ? 'Hôm nay' : ahead === 1 ? 'Ngày mai' : WEEKDAY[t.getUTCDay()],
+      date: `${t.getUTCDate()}/${t.getUTCMonth() + 1}`,
+    }
+  })
+}
+
+// Đặt cho hôm nay thì bỏ các giờ đã qua
+const toMinutes = (s) => s.split(':').reduce((h, m) => h * 60 + Number(m))
+export const slotsFor = (date, d = new Date()) =>
+  date === vnDate(d) ? slots.filter((s) => toMinutes(s) > vnMinutes(d)) : slots
