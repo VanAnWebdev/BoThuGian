@@ -12,15 +12,16 @@ npm test         # test logic giờ mở cửa / đặt bàn (node:test, không 
 ## Cấu trúc
 
 ```
-├── index.html              # meta SEO, font Baloo 2 + Comfortaa (Google Fonts)
+├── index.html              # meta SEO, Comfortaa (Google Fonts), preload Lucky Chunks
 ├── profile.md              # brand profile
 ├── nguon/                  # file gốc khách gửi (ảnh to, font, logo gốc) — KHÔNG đưa lên git
 │   ├── anh/nem-chua/       # ảnh gốc đã đặt tên theo nội dung
 │   ├── font/               # lucky-chunks/, comfortaa/
 │   └── logo/
+├── scripts/build-lucky-chunks-vn.py  # dựng lại font tiếng Việt từ nguon/font/lucky-chunks
 ├── public/
 │   ├── favicon.png
-│   ├── fonts/lucky-chunks.woff2   # chỉ dùng cho số/giá (thiếu dấu tiếng Việt)
+│   ├── fonts/lucky-chunks-vn.woff2  # Lucky Chunks đã bổ sung dấu tiếng Việt (tiêu đề)
 │   └── images/
 │       ├── logo.png        # logo gốc đã tách nền (dùng cho in ấn / og:image)
 │       ├── logo.webp       # bản nhẹ cho thanh điều hướng

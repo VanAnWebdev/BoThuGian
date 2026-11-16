@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'Lucky Chunks';
-  src: url('/fonts/lucky-chunks.woff2') format('woff2');
+  src: url('/fonts/lucky-chunks-vn.woff2') format('woff2');
   font-display: swap;
 }
 
@@ -18,10 +18,8 @@
   --on-green: #f5f1d8;
   --on-green-soft: #b7c2b2;
 
-  /* Lucky Chunks thiếu 93/134 ký tự có dấu tiếng Việt → chỉ dùng cho số và giá (--num);
-     tiêu đề tiếng Việt dùng Baloo 2 để không lẫn font giữa chữ */
-  --display: 'Baloo 2', system-ui, sans-serif;
-  --num: 'Lucky Chunks', 'Baloo 2', system-ui, sans-serif;
+  /* Lucky Chunks đã bổ sung đủ dấu tiếng Việt (scripts/build-lucky-chunks-vn.py) */
+  --display: 'Lucky Chunks', system-ui, sans-serif;
   --sans: 'Comfortaa', system-ui, sans-serif;
   --step--1: 0.875rem;
   --step-0: clamp(1rem, 0.96rem + 0.2vw, 1.125rem);
@@ -53,9 +51,9 @@ img, video { display: block; max-width: 100%; height: auto; }
 h1, h2, h3 {
   margin: 0;
   font-family: var(--display);
-  font-weight: 500;
-  line-height: 1.08;
-  letter-spacing: -0.02em;
+  font-weight: 400;
+  line-height: 1.18; /* Lucky Chunks cao + dấu tiếng Việt chồng tầng: cần giãn dòng */
+  letter-spacing: 0;
   text-wrap: balance;
 }
 h2 { font-size: var(--step-3); }
@@ -90,7 +88,7 @@ section[id] { scroll-margin-top: var(--nav-h); }
 .btn--ghost:hover { background: var(--ink); border-color: var(--ink); color: var(--cream); }
 
 /* Chữ tách từng từ để trồi lên từ dưới mặt nạ; chừa chỗ cho dấu tiếng Việt chồng hai tầng */
-.w { display: inline-block; overflow: hidden; vertical-align: top; padding: 0.16em 0.03em 0.1em; margin: -0.16em -0.03em -0.1em; }
+.w { display: inline-block; overflow: hidden; vertical-align: top; padding: 0.3em 0.04em 0.16em; margin: -0.3em -0.04em -0.16em; }
 .w-in { display: inline-block; }
 
 /* Ngôi sao bốn cánh lấy từ logo */

@@ -29,7 +29,7 @@
 .story-fig.is-cutout img { width: 92%; height: auto; object-fit: contain; filter: drop-shadow(0 24px 30px rgb(16 35 24 / 0.3)); }
 .story-word {
   grid-column: 1; align-self: end;
-  font-size: clamp(4.5rem, 2rem + 10vw, 11rem); line-height: 0.95; letter-spacing: -0.04em;
+  font-size: clamp(4rem, 2rem + 8vw, 9rem); line-height: 1.1;
   color: var(--green);
 }
 .story-word small { display: block; margin-top: 12px; font: 500 var(--step-0) var(--sans); letter-spacing: 0.04em; color: var(--orange-ink); }

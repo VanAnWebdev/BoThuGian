@@ -50,7 +50,7 @@
 Phụ (chỉ dùng trong web, không thuộc bảng màu): cam đậm `#9C4F00` cho chữ nhỏ/giá trên nền kem (đủ tương phản), xanh lá non `#8FC49A` cho nhãn, đĩa món.
 
 ### Typography (chốt 16/11/2026)
-- **Lucky Chunks** (file trong `nguon/font/lucky-chunks/`) — font tiêu đề của bộ nhận diện. ⚠️ Thiếu 93/134 ký tự có dấu tiếng Việt (ả ạ ơ ư ế ộ…) → trên web chỉ dùng cho **số và giá** (có đủ số và chữ đ); tiêu đề tiếng Việt dùng **Baloo 2 ExtraBold** (dáng tròn đậm gần giống). Cần xác nhận bản quyền dùng web.
+- **Lucky Chunks** — tiêu đề. Bản gốc thiếu 93/134 ký tự có dấu tiếng Việt → đã **tự dựng bổ sung** (dấu hỏi, dấu nặng, móc ơ/ư vẽ mới theo nét font; ghép với dấu sẵn có): `nguon/font/lucky-chunks/Lucky Chunks VN.ttf`, web dùng `public/fonts/lucky-chunks-vn.woff2`, dựng lại bằng `scripts/build-lucky-chunks-vn.py`. ⚠️ Cần xác nhận bản quyền cho phép chỉnh sửa và dùng trên web.
 - **Comfortaa** — chữ thường (đủ dấu tiếng Việt; web tải từ Google Fonts, file gốc trong `nguon/font/comfortaa/`).
 
 ### Ngôn ngữ hình ảnh
@@ -89,7 +89,7 @@ Nhóm: Khai vị · Gỏi · Hấp · Nướng · Sườn bò nướng · Chiên
 
 ## 7. Vấn đề phát hiện khi kiểm tra dữ liệu ⚠️
 
-1. **"A Phệ / 2 Phệ" trong menu:** bài Travel+ số 01/2022 (tr. 140–141) viết về "Nem chua bò tơ 2 Phệ" của Chef Phạm Tuấn Hải tại **Nhà hàng 2 Phệ, 128 Tố Hữu** — cùng địa chỉ → nhiều khả năng là **tên cũ của quán**, không phải quán khác. ⚠️ Cần quán xác nhận quan hệ với 2 Phệ và Chef Hải trước khi web nhắc tên Chef. Menu in vẫn nên đổi "A Phệ" thành "Bò Thư Giãn". Ảnh mâm nem có watermark logo "A Phệ" → không dùng trên web.
+1. **"A Phệ" / "2 Phệ" là tên cũ của quán** (chủ quán xác nhận 16/11/2026); tên hiện tại duy nhất: **Bò Thư Giãn**. Bài Travel+ số 01/2022 (tr. 140–141) viết về nem chua bò tơ của Chef Phạm Tuấn Hải tại 128 Tố Hữu, khi quán còn tên 2 Phệ. Menu in nên đổi các câu "A Phệ" thành "Bò Thư Giãn". Ảnh mâm nem có watermark logo "A Phệ" → không dùng trên web.
 2. **Lỗi chính tả trong menu:** "Heneiken lùn" (→ Heineken), "Bơ tơ có da / không da" (→ Bò tơ).
 3. **Hai logo** (mascot vs cốc bia) — xem mục 3.
 4. **Figma tham khảo** là mẫu của thương hiệu khác ("Ngọc Di – Bánh tôm Hồ Tây") và có comment góp ý "đổi mới khác đi" → web chỉ lấy tinh thần (xanh rêu + cam + kem), không sao chép bố cục.

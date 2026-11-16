@@ -17,7 +17,7 @@
   background: var(--orange);
   clip-path: polygon(50% 0, 61% 39%, 100% 50%, 61% 61%, 50% 100%, 39% 61%, 0 50%, 39% 39%);
 }
-.nem-price { font: 400 var(--step-3) / 1 var(--num); color: var(--orange-ink); }
+.nem-price { font: 400 var(--step-3) / 1 var(--display); color: var(--orange-ink); }
 
 .nem-pack {
   display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
