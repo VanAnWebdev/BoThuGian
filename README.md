@@ -20,7 +20,7 @@ npm test         # test logic giờ mở cửa / đặt bàn (node:test, không 
 │   └── logo/
 ├── scripts/build-lucky-chunks-vn.py  # dựng lại font tiếng Việt từ nguon/font/lucky-chunks
 ├── public/
-│   ├── favicon.png
+│   ├── favicon-v2.png      # icon tab: đầu bò đầu bếp (đổi tên file để trình duyệt bỏ cache icon cũ)
 │   ├── fonts/lucky-chunks-vn.woff2  # Lucky Chunks đã bổ sung dấu tiếng Việt (tiêu đề)
 │   └── images/
 │       ├── logo.png        # logo gốc đã tách nền (dùng cho in ấn / og:image)
